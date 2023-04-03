@@ -1,0 +1,158 @@
+{
+  "Schedule": {
+    "Lundi": {
+      "18:10": [],
+      "19:15": [],
+      "20:25": []
+    },
+    "Mardi": {
+      "18:10": [
+        {
+          "id": 1,
+          "name": "Salsa 1",
+          "price": 17
+        },
+        {
+          "id": 2,
+          "name": "Kiz 1",
+          "price": 23
+        },
+        {
+          "id": 3,
+          "name": "Salsa 4",
+          "price": 11
+        }
+      ],
+      "19:15": [
+        {
+          "id": 4,
+          "name": "Kiz 2",
+          "price": 19
+        },
+        {
+          "id": 4,
+          "name": "Rueed 3",
+          "price": 16
+        },
+        {
+          "id": 5,
+          "name": "Rueed 4",
+          "price": 21
+        }
+      ],
+      "20:25": [
+        {
+          "id": 6,
+          "name": "Urban kiz",
+          "price": 13
+        },
+        {
+          "id": 7,
+          "name": "Salsa 3",
+          "price": 10
+        }
+      ]
+    },
+    "Mercredi": {
+      "18:10": [
+        {
+          "id": 8,
+          "name": "Bachata 1",
+          "price": 22
+        },
+        {
+          "id": 9,
+          "name": "Rueda 1",
+          "price": 16
+        },
+        {
+          "id": 10,
+          "name": "Rueda 2",
+          "price": 12
+        }
+      ],
+      "19:15": [
+        {
+          "id": 11,
+          "name": "Bachata 2",
+          "price": 25
+        },
+        {
+          "id": 12,
+          "name": "Salsa 3",
+          "price": 11
+        },
+        {
+          "id": 13,
+          "name": "Salsa 1",
+          "price": 14
+        }
+      ],
+      "20:25": [
+        {
+          "id": 15,
+          "name": "Rueda 3",
+          "price": 20
+        }
+      ]
+    },
+    "Jeudi": {
+      "18:10": [
+        {
+          "id": 16,
+          "name": "Salsa 1",
+          "price": 13
+        },
+        {
+          "name": "Rueda 2",
+          "price": 19
+        },
+        {
+          "id": 17,
+          "name": "Bachata 3",
+          "price": 10
+        }
+      ],
+      "19:15": [
+        {
+          "id": 18,
+          "name": "Salsa 2",
+          "price": 16
+        }
+      ],
+      "20:25": []
+    },
+    "Vendredi": {
+      "18:10": [],
+      "19:15": [],
+      "20:25": []
+    },
+    "Samedi": {
+      "18:10": [],
+      "19:15": [],
+      "20:25": []
+    },
+    "Dimanche": {
+      "18:10": [
+        {
+          "id": 19,
+          "name": "Salsa 1",
+          "price": 11
+        },
+        {
+          "id": 20,
+          "name": "Salsa 2",
+          "price": 24
+        }
+      ],
+      "19:15": [
+        {
+          "id": 21,
+          "name": "Bachata 1",
+          "price": 15
+        }
+      ]
+    }
+  }
+}
+

@@ -21,7 +21,7 @@ export const useScheduleStore = defineStore('scheduleStore', {
     actions: {
         async getSchedule(){
             this.isLoading = true;
-            const res = await axios.get('http://localhost:3000/Schedule');
+            const res = await axios.get('https://my-json-server.typicode.com/Pos-cmd/schedule/Schedule');
             this.schedule = res.data;
             this.isLoading = false;
         },
