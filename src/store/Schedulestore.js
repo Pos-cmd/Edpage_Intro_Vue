@@ -14,7 +14,6 @@ export const useScheduleStore = defineStore('scheduleStore', {
         totalPrice: (state) => {
             return Object.entries(state.subscribeTo).reduce((total, course) => {
                const totalPrice = total + course[1].price
-                // console.log(course[1], totalPrice)
                return totalPrice
             }, 0);
         }
