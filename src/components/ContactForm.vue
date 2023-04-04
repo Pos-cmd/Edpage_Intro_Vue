@@ -1,93 +1,64 @@
 <script setup>
 
-import {ref} from "vue";
-
-const error = ref({})
-const success = ref({})
-
-/**
- * Vérifie si un nom est valide.
- * @param {string} name - Le nom à vérifier.
- * @returns {boolean} Vrai si le nom est valide, faux sinon.
- */
-function isValidName(name) {
-  // le nom et prénom doivent avoir plus de 3 caractères et ne contenant pas de chiffre
-  const regex = /^[a-zA-Z'\-]{3,}$/;
-  return regex.test(name);
-}
-
-/**
- * Vérifie si une adresse e-mail est valide.
- * @param {string} email - L'adresse e-mail à vérifier.
- * @returns {boolean} Vrai si l'adresse e-mail est valide, faux sinon.
- */
-function isValidEmail(email) {
-  // L’email doit avoir un format valide
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(email);
-}
-
 /**
  * Soumet le formulaire d'inscription.
  * @param {Event} event - L'événement de soumission du formulaire.
  * @returns {void}
  */
-function submit(event){
-  const {name} = Object.fromEntries(new FormData(event.target))
-  alert('Vous ête bien incrit: '+name)
+function submit (event) {
+  const { name } = Object.fromEntries(new FormData(event.target))
+  alert('Vous ête bien incrit: ' + name)
 }
 </script>
 
 <template>
-
   <div class="contactForm">
-      <div class="msg">
-        <h4>NOUS ÉCRIRE</h4>
-        <p>Envoyez nous vos demande</p>
-      </div>
-      <div class="form">
-        <form action="" @submit.prevent=" (event) => submit(event)">
-          <div class="form-row">
-            <div class="form-el">
-              <input type="text" name="name" id="name" placeholder="Nom" required>
-              <input type="text" name="phone" id="phone" placeholder="Telephone" required>
-            </div>
-            <div class="form-el">
-              <input type="text" name="email" id="email" placeholder="Email" required>
-              <input type="text" name="subject" id="subject" placeholder="Sujet">
-            </div>
+    <div class="msg">
+      <h4>NOUS ÉCRIRE</h4>
+      <p>Envoyez nous vos demande</p>
+    </div>
+    <div class="form">
+      <form action="" @submit.prevent="(event) => submit(event)">
+        <div class="form-row">
+          <div class="form-el">
+            <input type="text" name="name" id="name" placeholder="Nom" required>
+            <input type="text" name="phone" id="phone" placeholder="Telephone" required>
           </div>
-          <div class="form-row">
-            <textarea name="message" id="textarea" cols="30" placeholder="Message"></textarea>
+          <div class="form-el">
+            <input type="text" name="email" id="email" placeholder="Email" required>
+            <input type="text" name="subject" id="subject" placeholder="Sujet">
           </div>
-          <button type="submit">ENVOYER</button>
+        </div>
+        <div class="form-row">
+          <textarea name="message" id="textarea" cols="30" placeholder="Message"></textarea>
+        </div>
+        <button type="submit">ENVOYER</button>
 
-        </form>
-      </div>
+      </form>
+    </div>
   </div>
-
 </template>
 
 <style scoped>
-.contactForm{
+.contactForm {
   display: flex;
   width: 100%;
   margin-block: 5rem;
   gap: 2rem;
 }
 
-.msg{
+.msg {
   width: 30%;
   background-color: #060a4f;
   padding-inline: 1rem;
   color: white;
 }
 
-h4{
+h4 {
   font-size: 1.5rem;
 }
 
-h4:after{
+h4:after {
   content: "";
   background-color: white;
   width: 65px;
@@ -96,20 +67,20 @@ h4:after{
   height: 1px;
 }
 
-.form{
+.form {
   width: 70%;
   background-color: #f3f1f1;
   padding: 1rem;
 }
 
-form{
+form {
   width: 100%;
   display: flex;
   gap: 1rem;
   flex-direction: column;
 }
 
-.form-row{
+.form-row {
   height: 30%;
   justify-content: space-between;
   display: flex;
@@ -117,25 +88,25 @@ form{
 }
 
 .form-el {
-width: 90%;
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 1rem;
-align-content: space-between;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  align-content: space-between;
 }
 
 input {
-width: 100%;
-height: 30px;
+  width: 100%;
+  height: 30px;
 }
 
-textarea{
-width: 100%;
-height: 70px;
+textarea {
+  width: 100%;
+  height: 70px;
 }
 
-button{
+button {
   width: 7rem;
   border: none;
   background-color: red;
@@ -145,14 +116,14 @@ button{
   transition: background-color .4s ease-in;
 }
 
-button:hover{
+button:hover {
   background-color: #d30606;
 }
 
 @media screen and (width < 760px) {
-.contactForm{
-  flex-wrap: wrap;
-}
+  .contactForm {
+    flex-wrap: wrap;
+  }
 
   .msg {
     width: 100%;

@@ -1,9 +1,9 @@
 <script setup>
-import {RouterView} from "vue-router";
-import {useScheduleStore} from "./store/Schedulestore.js";
-import Loading from "./components/Loading.vue";
+import { RouterView } from 'vue-router'
+import { useScheduleStore } from './store/Schedulestore.js'
+import ScheduleLoading from './components/ScheduleLoading.vue'
 
-const scheduleStore = useScheduleStore();
+const scheduleStore = useScheduleStore()
 scheduleStore.getSchedule()
 
 </script>
@@ -12,11 +12,10 @@ scheduleStore.getSchedule()
 
   <div class="container">
     <div class="element">
-      <Loading v-if="scheduleStore.isLoading"/>
+      <ScheduleLoading v-if="scheduleStore.isLoading"/>
       <RouterView v-if="!scheduleStore.isLoading" />
     </div>
   </div>
-
 
 </template>
 
@@ -31,6 +30,5 @@ scheduleStore.getSchedule()
   margin-inline: auto;
   width: 90%;
 }
-
 
 </style>

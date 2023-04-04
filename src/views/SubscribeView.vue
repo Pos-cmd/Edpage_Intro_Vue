@@ -9,8 +9,6 @@
       <p>
         <input type="password" id="password" name="password" placeholder="Mot de passe..." required>
         <span :class="{ err: !isValid.psw, succ: isValid.psw }">{{ isValid.pswMsg }}</span>
-
-
       </p>
       <p>
         <button type="submit" class="btnSubmit" id="login">Se connecter</button>
@@ -20,14 +18,14 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
-import { useRouter } from "vue-router";
+import { reactive } from 'vue'
+import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
 const user = {
-  name: "admin",
-  password: "admin"
+  name: 'admin',
+  password: 'admin'
 }
 
 const isValid = reactive({})
@@ -42,18 +40,18 @@ const submit = (event) => {
 
   if (username !== user.name) {
     isValid.name = false
-    isValid.nameMsg = `Nom d'utilisateur incorrect`
+    isValid.nameMsg = 'Nom d\'utilisateur incorrect'
   } else {
     isValid.name = true
-    isValid.nameMsg = "Champ valide"
+    isValid.nameMsg = 'Champ valide'
   }
 
   if (password !== user.password) {
     isValid.psw = false
-    isValid.pswMsg = `Mot de passe incorrect`
+    isValid.pswMsg = 'Mot de passe incorrect'
   } else {
     isValid.psw = true
-    isValid.pswMsg = "Champ valide"
+    isValid.pswMsg = 'Champ valide'
   }
 
   if (username === user.name && password === user.password) {
@@ -61,7 +59,6 @@ const submit = (event) => {
     router.push('/home')
   }
 }
-
 
 const isConnect = localStorage.getItem('isConnect')
 if (isConnect) {

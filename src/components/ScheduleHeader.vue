@@ -15,23 +15,22 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { useScheduleStore } from "../store/Schedulestore.js";
-import { storeToRefs } from "pinia";
-import {useRouter} from "vue-router";
+import { useScheduleStore } from '../store/Schedulestore.js'
+import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const scheduleStore = useScheduleStore()
 
 const { totalPrice } = storeToRefs(scheduleStore)
 
-const connect = JSON.parse(localStorage.getItem('isConnect')).isConnect;
+const connect = JSON.parse(localStorage.getItem('isConnect')).isConnect
 
-if(!connect){
+if (!connect) {
   router.push('/')
 }
-const logOut = function(){
-  localStorage.setItem('isConnect', JSON.stringify({isConnect: false}))
+const logOut = function () {
+  localStorage.setItem('isConnect', JSON.stringify({ isConnect: false }))
 }
 
 </script>
@@ -46,7 +45,6 @@ const logOut = function(){
 .lastpart span {
   margin-right: 10px;
 }
-
 
 .information {
   display: flex;
