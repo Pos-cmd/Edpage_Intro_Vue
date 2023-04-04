@@ -21,9 +21,14 @@ export const useScheduleStore = defineStore('scheduleStore', {
     actions: {
         async getSchedule(){
             this.isLoading = true;
-            const res = await axios.get('https://my-json-server.typicode.com/Pos-cmd/schedule/Schedule');
-            this.schedule = res.data;
-            console.log("Data fetch: "+this.schedule )
+            
+            try{
+                const res = await axios.get('https://my-json-server.typicode.com/Pos-cmd/schedule/Schedule');
+                this.schedule = await res.data;
+            }catch(error){
+                alert(error)
+            }
+
             this.isLoading = false;
         },
         subscribe : function (event) {

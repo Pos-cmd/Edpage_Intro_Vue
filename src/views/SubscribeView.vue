@@ -4,9 +4,13 @@
       <form class="form" @submit.prevent="(event) => submit(event)">
         <p>
           <input type="text" id="username" name="username" placeholder="Username" required>
+          <span :class="{err: !isValid.name, succ: isValid.name}" >{{ isValid.nameMsg }}</span>
         </p>
         <p>
           <input type="password" id="password" name="password" placeholder="Mot de passe..." required>
+          <span :class="{err: !isValid.psw, succ: isValid.psw}" >{{ isValid.pswMsg }}</span>
+
+
         </p>
         <p>
           <button type="submit" class="btnSubmit" id="login">Se connecter</button>
@@ -17,7 +21,7 @@
 </template>
 
 <script setup>
-import {ref} from "vue";
+import {reactive} from "vue";
 import {useRouter} from "vue-router";
 
 const router = useRouter()
@@ -27,8 +31,27 @@ const user = {
   password: "admin"
 }
 
+const isValid = reactive({})
+
 const submit = (event) => {
   const {username, password} = Object.fromEntries(new FormData(event.target))
+
+  if(username !== user.name){
+    isValid.name = false
+    isValid.nameMsg = `Nom d'utilisateur incorrect`
+  }else{
+    isValid.name = true
+    isValid.nameMsg = "Champ valide"
+  }
+
+  if(password !== user.password){
+    isValid.psw = false
+    isValid.pswMsg = `Mot de passe incorrect`
+  }else{
+    isValid.psw = true
+    isValid.pswMsg = "Champ valide"
+  }
+
   if(username === user.name && password===user.password){
       router.push('/')
   }
@@ -46,7 +69,13 @@ p {
   position: relative;
 }
 
+.err{
+  color: red;
+}
 
+.succ{
+  color: green
+}
 
 .loginForm {
   background-color: #fff;
