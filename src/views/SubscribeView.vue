@@ -1,28 +1,27 @@
 <template>
-    <div class="loginForm">
-      <h2>Login</h2>
-      <form class="form" @submit.prevent="(event) => submit(event)">
-        <p>
-          <input type="text" id="username" name="username" placeholder="Username" required>
-          <span :class="{err: !isValid.name, succ: isValid.name}" >{{ isValid.nameMsg }}</span>
-        </p>
-        <p>
-          <input type="password" id="password" name="password" placeholder="Mot de passe..." required>
-          <span :class="{err: !isValid.psw, succ: isValid.psw}" >{{ isValid.pswMsg }}</span>
+  <div class="loginForm">
+    <h2>Login</h2>
+    <form class="form" @submit.prevent="(event) => submit(event)">
+      <p>
+        <input type="text" id="username" name="username" placeholder="Username" required>
+        <span :class="{ err: !isValid.name, succ: isValid.name }">{{ isValid.nameMsg }}</span>
+      </p>
+      <p>
+        <input type="password" id="password" name="password" placeholder="Mot de passe..." required>
+        <span :class="{ err: !isValid.psw, succ: isValid.psw }">{{ isValid.pswMsg }}</span>
 
 
-        </p>
-        <p>
-          <button type="submit" class="btnSubmit" id="login">Se connecter</button>
-        </p>
-      </form>
-    </div>
-
+      </p>
+      <p>
+        <button type="submit" class="btnSubmit" id="login">Se connecter</button>
+      </p>
+    </form>
+  </div>
 </template>
 
 <script setup>
-import {reactive} from "vue";
-import {useRouter} from "vue-router";
+import { reactive } from "vue";
+import { useRouter } from "vue-router";
 
 const router = useRouter()
 
@@ -34,33 +33,36 @@ const user = {
 const isValid = reactive({})
 
 const submit = (event) => {
-  const {username, password} = Object.fromEntries(new FormData(event.target))
+  const { username, password } = Object.fromEntries(new FormData(event.target))
 
-  if(username !== user.name){
+  if (username !== user.name) {
     isValid.name = false
     isValid.nameMsg = `Nom d'utilisateur incorrect`
-  }else{
+  } else {
     isValid.name = true
     isValid.nameMsg = "Champ valide"
   }
 
-  if(password !== user.password){
+  if (password !== user.password) {
     isValid.psw = false
     isValid.pswMsg = `Mot de passe incorrect`
-  }else{
+  } else {
     isValid.psw = true
     isValid.pswMsg = "Champ valide"
   }
 
-  if(username === user.name && password===user.password){
-        localStorage.setItem('isConnect', JSON.stringify({isConnect: true}))
-      router.push('/home')
+  if (username === user.name && password === user.password) {
+    localStorage.setItem('isConnect', JSON.stringify({ isConnect: true }))
+    router.push('/home')
   }
 }
 
-const isConnect = JSON.parse(localStorage.getItem('isConnect')).isConnect
+
+const isConnect = localStorage.getItem('isConnect')
 if (isConnect) {
-  router.push('/home')
+  if (JSON.parse(isConnect).isConnect) {
+    router.push('/home')
+  }
 }
 
 </script>
@@ -75,11 +77,11 @@ p {
   position: relative;
 }
 
-.err{
+.err {
   color: red;
 }
 
-.succ{
+.succ {
   color: green
 }
 
@@ -89,7 +91,7 @@ p {
   height: 100%;
   margin: auto;
   text-align: center;
-  padding:1rem;
+  padding: 1rem;
   border-radius: 4px;
   box-shadow: 0px 30px 50px 0px rgba(0, 0, 0, 0.2);
 }
@@ -107,6 +109,7 @@ input {
   line-height: 60px;
   border-radius: 4px;
 }
+
 input:focus {
   border-color: #3ca9e2;
 }
@@ -123,6 +126,7 @@ input:focus {
   border-radius: 5px;
   margin-block: 1rem;
 }
+
 .btnSubmit:hover {
   background-color: #329dd5;
 }
