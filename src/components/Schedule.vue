@@ -51,7 +51,7 @@ const isActive = (time, course, date, price) => {
                     :class = "{ active: isActive(time, course.name, data[0], course.price) }"
                     @click="setActive(course.id, time, course.name, data[0], course.price)"
                     >
-                  {{course.name}} : {{scheduleStore.formatPrice(course.price)}}
+                  <span>{{course.name}}</span><span>{{scheduleStore.formatPrice(course.price)}}</span> 
                 </li>
               </ul>
             </div>
@@ -74,6 +74,7 @@ table, th, td {
   padding: 1%;
   border: 1px solid #ddd;
   text-align: center;
+  width: 70px;
 }
 
 .active{
@@ -108,10 +109,19 @@ table, th, td {
   margin-inline: auto;
 }
 
-
+li span{
+    display: flex;
+    flex-direction: column;
+  }
 
 .event:hover{
   background: #4c6c8b;
+}
+
+@media (width < 760px) {
+  table{
+    font-size: 10px;
+  }
 }
 
 </style>

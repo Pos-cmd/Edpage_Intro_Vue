@@ -24,7 +24,7 @@ scheduleStore.getSchedule()
 
 .container{
   max-width: 1440px;
-
+  margin: auto;
 }
 
 .element{

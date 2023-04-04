@@ -1,5 +1,5 @@
 <template>
-  <img src="../assets/img/Spinner-1s-200px.gif" alt="spinner">
+  <img src="../assets/img/1480.gif" alt="spinner">
 </template>
 
 <style>
@@ -8,5 +8,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    mix-blend-mode: color-burn;
   }
 </style>
