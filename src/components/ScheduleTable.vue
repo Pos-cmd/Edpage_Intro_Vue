@@ -13,12 +13,14 @@
           <td v-for="(data, dataIndex) in scheduleData" :key="dataIndex">
             <div v-for="(events, eventsIndex) in data" :key="eventsIndex">
               <ul class="events" v-for="(event, eventIndex) in events" :key="eventIndex">
+                <div v-if="(eventIndex === time)">
                 <li class="event" v-for="(course, courseIndex) in event" :key="courseIndex"
                   :class="{ active: isActive(time, course.name, data[0], course.price) }"
-                  @click="setActive(course.id, time, course.name, data[0], course.price)" v-if="(eventIndex === time)">
-                  <span>{{ course.name }}</span><span>{{ scheduleStore.formatPrice(course.price) }}</span>
-                </li>
-              </ul>
+                  @click="setActive(course.id, time, course.name, data[0], course.price)">
+                    <span>{{ course.name }}</span><span>{{ scheduleStore.formatPrice(course.price) }}</span>
+                  </li>
+                </div>
+                </ul>
             </div>
           </td>
         </tr>
