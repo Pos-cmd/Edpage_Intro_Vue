@@ -5,14 +5,10 @@ import {useScheduleStore} from "../store/Schedulestore.js";
 import {storeToRefs} from "pinia";
 
 const scheduleStore = useScheduleStore();
-const {scheduleData, totalPrice} = storeToRefs(scheduleStore)
+const {scheduleData} = storeToRefs(scheduleStore)
 
 const times = ref(['18:10', '19:15', '20:25'])
 const activeCourses = ref({})
-
-const addCourse = (event) =>{
-
-}
 
 const setActive = (id, time, course, date, price) => {
   if (activeCourses.value[date] && activeCourses.value[date][time] === course) {
@@ -44,7 +40,7 @@ const isActive = (time, course, date, price) => {
         </thead>
         <tbody>
         <tr v-for="(time, index) in times" :key="index">
-          <td >{{ time }}</td>
+          <th >{{ time }}</th>
           <td v-for="data in scheduleData">
             <div v-for="events in data">
               <ul class="events" v-for="(event , eventIndex) in events">
@@ -68,21 +64,20 @@ const isActive = (time, course, date, price) => {
 
 <style scoped>
 table, th, td {
-  border: 1px solid black;
-  border-spacing: 0;
+  border-collapse: collapse;
+  border: .01px solid #ddd;
   text-align: center;
 }
 
-tbody tr{
-  max-height: 140px;
+.schedule-table th,
+.schedule-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
 }
 
 .active{
   background-color: #3788D8 !important;
-}
-
-.schedule{
-  height: 70vh;
 }
 
 .thead{
@@ -97,6 +92,7 @@ tbody tr{
 
 .events{
   width: 100%;
+  padding: 0;
 }
 
 .event{
@@ -112,7 +108,16 @@ tbody tr{
   margin-inline: auto;
 }
 
+
+
 .event:hover{
   background: #4c6c8b;
+}
+
+
+
+@media (width < 760px) {
+  tr { display: block; float: left; }
+th, td { display: block; }
 }
 </style>

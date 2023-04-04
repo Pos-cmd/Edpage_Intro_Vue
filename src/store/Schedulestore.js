@@ -5,7 +5,7 @@ export const useScheduleStore = defineStore('scheduleStore', {
     state: () =>({
         schedule: [],
         isLoading: false,
-        subscribeTo: []
+        subscribeTo: [],
     }),
     getters: {
         scheduleData(){
@@ -21,7 +21,7 @@ export const useScheduleStore = defineStore('scheduleStore', {
     actions: {
         async getSchedule(){
             this.isLoading = true;
-            
+
             try{
                 const res = await axios.get('https://my-json-server.typicode.com/Pos-cmd/schedule/Schedule');
                 this.schedule = await res.data;

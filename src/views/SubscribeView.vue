@@ -53,8 +53,14 @@ const submit = (event) => {
   }
 
   if(username === user.name && password===user.password){
-      router.push('/')
+        localStorage.setItem('isConnect', JSON.stringify({isConnect: true}))
+      router.push('/home')
   }
+}
+
+const isConnect = JSON.parse(localStorage.getItem('isConnect')).isConnect
+if (isConnect) {
+  router.push('/home')
 }
 
 </script>

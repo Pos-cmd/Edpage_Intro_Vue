@@ -22,7 +22,7 @@ function isValidNumber(participation) {
 }
 
 function submit(event){
-  const {name, phone, email, subject, message} = Object.fromEntries(new FormData(event.target))
+  const {name} = Object.fromEntries(new FormData(event.target))
   alert('Vous ête bien incrit: '+name)
 }
 </script>
@@ -136,5 +136,19 @@ button{
 
 button:hover{
   background-color: #d30606;
+}
+
+@media screen and (width < 760px) {
+.contactForm{
+  flex-wrap: wrap;
+}
+
+  .msg {
+    width: 100%;
+  }
+
+  .form {
+    width: 100%;
+  }
 }
 </style>
