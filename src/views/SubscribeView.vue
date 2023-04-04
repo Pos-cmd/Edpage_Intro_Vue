@@ -87,8 +87,13 @@ p {
 
 .loginForm {
   background-color: #fff;
-  width: 35%;
-  height: 100%;
+  min-width: 300px;
+  max-width: 400px;
+  position: absolute;
+  height: 300px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
   margin: auto;
   text-align: center;
   padding: 1rem;

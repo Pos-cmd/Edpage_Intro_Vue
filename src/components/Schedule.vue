@@ -71,7 +71,7 @@ table, th, td {
 
 .schedule-table th,
 .schedule-table td {
-  padding: 10px;
+  padding: 1%;
   border: 1px solid #ddd;
   text-align: center;
 }
@@ -114,10 +114,4 @@ table, th, td {
   background: #4c6c8b;
 }
 
-
-
-@media (width < 760px) {
-  tr { display: block; float: left; }
-th, td { display: block; }
-}
 </style>
