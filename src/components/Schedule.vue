@@ -10,6 +10,15 @@ const {scheduleData} = storeToRefs(scheduleStore)
 const times = ref(['18:10', '19:15', '20:25'])
 const activeCourses = ref({})
 
+/**
+ * Définit ou désactive un cours actif et abonne l'utilisateur.
+ * @param {string} id - L'ID du cours.
+ * @param {string} time - L'heure du cours.
+ * @param {string} course - Le nom du cours.
+ * @param {string} date - La date du cours.
+ * @param {number} price - Le prix du cours.
+ * @returns {void}
+ */
 const setActive = (id, time, course, date, price) => {
   if (activeCourses.value[date] && activeCourses.value[date][time] === course) {
     delete activeCourses.value[date][time];
@@ -20,7 +29,14 @@ const setActive = (id, time, course, date, price) => {
   scheduleStore.subscribe({id, date, time, course, price})
 };
 
-const isActive = (time, course, date, price) => {
+/**
+ * Vérifie si le cours est actif pour une heure et une date spécifiques.
+ * @param {string} time - L'heure du cours.
+ * @param {string} course - Le nom du cours.
+ * @param {string} date - La date du cours.
+ * @returns {boolean} Vrai si le cours est actif, faux sinon.
+ */
+const isActive = (time, course, date) => {
   return (
       activeCourses.value[date] &&
       activeCourses.value[date][time] === course

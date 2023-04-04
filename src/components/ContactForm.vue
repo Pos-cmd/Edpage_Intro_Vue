@@ -5,22 +5,33 @@ import {ref} from "vue";
 const error = ref({})
 const success = ref({})
 
+/**
+ * Vérifie si un nom est valide.
+ * @param {string} name - Le nom à vérifier.
+ * @returns {boolean} Vrai si le nom est valide, faux sinon.
+ */
 function isValidName(name) {
   // le nom et prénom doivent avoir plus de 3 caractères et ne contenant pas de chiffre
   const regex = /^[a-zA-Z'\-]{3,}$/;
   return regex.test(name);
 }
+
+/**
+ * Vérifie si une adresse e-mail est valide.
+ * @param {string} email - L'adresse e-mail à vérifier.
+ * @returns {boolean} Vrai si l'adresse e-mail est valide, faux sinon.
+ */
 function isValidEmail(email) {
   // L’email doit avoir un format valide
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regex.test(email);
 }
-function isValidNumber(participation) {
-  return participation !== "" &&
-      Number.isInteger(Number(participation)) &&
-      participation >= 0;
-}
 
+/**
+ * Soumet le formulaire d'inscription.
+ * @param {Event} event - L'événement de soumission du formulaire.
+ * @returns {void}
+ */
 function submit(event){
   const {name} = Object.fromEntries(new FormData(event.target))
   alert('Vous ête bien incrit: '+name)

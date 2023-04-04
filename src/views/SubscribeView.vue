@@ -32,6 +32,11 @@ const user = {
 
 const isValid = reactive({})
 
+/**
+*Fonction qui vérifie les identifiants entrés par l'utilisateur
+*@param {Event} event - Événement déclenché par la soumission du formulaire.
+*@returns {void}
+*/
 const submit = (event) => {
   const { username, password } = Object.fromEntries(new FormData(event.target))
 
