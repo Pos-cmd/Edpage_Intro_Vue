@@ -1,6 +1,6 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import { useScheduleStore } from './store/scheduleStore.js'
+import { useScheduleStore } from './store/schedule-store.js'
 import ScheduleLoading from './components/ScheduleLoading.vue'
 
 const scheduleStore = useScheduleStore()

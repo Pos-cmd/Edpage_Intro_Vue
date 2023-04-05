@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { useScheduleStore } from '../store/scheduleStore.js'
+import { useScheduleStore } from '../store/schedule-store.js'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
 import { formatPrice } from '../utils';

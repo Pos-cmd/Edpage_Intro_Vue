@@ -63,7 +63,7 @@
 
 <script setup>
 import { onBeforeUnmount, onMounted, ref, computed } from 'vue'
-import { useScheduleStore } from '../store/scheduleStore.js'
+import { useScheduleStore } from '../store/schedule-store.js'
 import { storeToRefs } from 'pinia'
 import { formatPrice } from '../utils'
 
