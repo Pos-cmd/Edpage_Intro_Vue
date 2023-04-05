@@ -18,22 +18,54 @@ function submit (event) {
       <p>Envoyez nous vos demande</p>
     </div>
     <div class="form">
-      <form action="" @submit.prevent="(event) => submit(event)">
+      <form
+        action=""
+        @submit.prevent="(event) => submit(event)"
+      >
         <div class="form-row">
           <div class="form-el">
-            <input type="text" name="name" id="name" placeholder="Nom" required>
-            <input type="text" name="phone" id="phone" placeholder="Telephone" required>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              placeholder="Nom"
+              required
+            >
+            <input
+              id="phone"
+              type="text"
+              name="phone"
+              placeholder="Telephone"
+              required
+            >
           </div>
           <div class="form-el">
-            <input type="text" name="email" id="email" placeholder="Email" required>
-            <input type="text" name="subject" id="subject" placeholder="Sujet">
+            <input
+              id="email"
+              type="text"
+              name="email"
+              placeholder="Email"
+              required
+            >
+            <input
+              id="subject"
+              type="text"
+              name="subject"
+              placeholder="Sujet"
+            >
           </div>
         </div>
         <div class="form-row">
-          <textarea name="message" id="textarea" cols="30" placeholder="Message"></textarea>
+          <textarea
+            id="textarea"
+            name="message"
+            cols="30"
+            placeholder="Message"
+          />
         </div>
-        <button type="submit">ENVOYER</button>
-
+        <button type="submit">
+          ENVOYER
+        </button>
       </form>
     </div>
   </div>

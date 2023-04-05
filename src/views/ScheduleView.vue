@@ -6,7 +6,7 @@ import Header from '../components/ScheduleHeader.vue'
 </script>
 
 <template>
-  <Header/>
-  <ScheduleTable/>
-  <ContactForm/>
+  <Header />
+  <ScheduleTable />
+  <ContactForm />
 </template>

@@ -1,24 +1,33 @@
 <template>
   <div class="header">
-    <h1 class="titre">Calendrier</h1>
+    <h1 class="titre">
+      Calendrier
+    </h1>
     <div class="information">
       <span>SESSION DÉCEMBRE 2022</span>
       <div class="date">
         <span>04 déc 2022</span>-<span>19 jan 2023</span>
       </div>
       <div class="lastpart">
-        <span>Total : {{ scheduleStore.formatPrice(parseInt(totalPrice)) }}</span>
-        <RouterLink class="subscribeBtn" to="/" @click="logOut" v-if="connect">Déconnexion</RouterLink>
+        <span>Total : {{ formatPrice(parseInt(totalPrice)) }}</span>
+        <RouterLink
+          v-if="connect"
+          class="subscribeBtn"
+          to="/"
+          @click="logOut"
+        >
+          Déconnexion
+        </RouterLink>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { useScheduleStore } from '../store/Schedulestore.js'
+import { useScheduleStore } from '../store/scheduleStore.js'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
-
+import { formatPrice } from '../utils';
 const router = useRouter()
 const scheduleStore = useScheduleStore()
 

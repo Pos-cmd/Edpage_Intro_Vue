@@ -1,17 +1,38 @@
 <template>
   <div class="loginForm">
     <h2>Login</h2>
-    <form class="form" @submit.prevent="(event) => submit(event)">
+    <form
+      class="form"
+      @submit.prevent="(event) => submit(event)"
+    >
       <p>
-        <input type="text" id="username" name="username" placeholder="Username" required>
+        <input
+          id="username"
+          type="text"
+          name="username"
+          placeholder="Username"
+          required
+        >
         <span :class="{ err: !isValid.name, succ: isValid.name }">{{ isValid.nameMsg }}</span>
       </p>
       <p>
-        <input type="password" id="password" name="password" placeholder="Mot de passe..." required>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          placeholder="Mot de passe..."
+          required
+        >
         <span :class="{ err: !isValid.psw, succ: isValid.psw }">{{ isValid.pswMsg }}</span>
       </p>
       <p>
-        <button type="submit" class="btnSubmit" id="login">Se connecter</button>
+        <button
+          id="login"
+          type="submit"
+          class="btnSubmit"
+        >
+          Se connecter
+        </button>
       </p>
     </form>
   </div>

@@ -1,52 +1,56 @@
 <template>
   <div class="schedule">
-    <table class="schedule-table" v-if="!mobileClass">
+    <table v-if="!mobileClass" class="schedule-table">
       <thead class="thead">
         <tr>
           <th>Horaire</th>
-          <th v-for="(date, dateIndex) in scheduleData" :key="dateIndex">{{ date[0] }}</th>
+          <th v-for="(date, dateIndex) in scheduleData" :key="dateIndex">
+            {{ date[0] }}
+          </th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(time, timeIndex) in times" :key="timeIndex">
+        <tr v-for="(time, timeIndex) in ScheduleTime" :key="timeIndex">
           <th>{{ time }}</th>
           <td v-for="(data, dataIndex) in scheduleData" :key="dataIndex">
             <div v-for="(events, eventsIndex) in data" :key="eventsIndex">
-              <ul class="events" v-for="(event, eventIndex) in events" :key="eventIndex">
+              <ul v-for="(event, eventIndex) in events" :key="eventIndex" class="events">
                 <div v-if="(eventIndex === time)">
-                <li class="event" v-for="(course, courseIndex) in event" :key="courseIndex"
-                  :class="{ active: isActive(time, course.name, data[0], course.price) }"
-                  @click="setActive(course.id, time, course.name, data[0], course.price)">
-                    <span>{{ course.name }}</span><span>{{ scheduleStore.formatPrice(course.price) }}</span>
+                  <li v-for="(course, courseIndex) in event" :key="courseIndex" class="event"
+                    :class="{ active: isActive(time, course.name, data[0], course.price) }"
+                    @click="setActive(course.id, time, course.name, data[0], course.price)">
+                    <span>{{ course.name }}</span><span>{{ formatPrice(course.price) }}</span>
                   </li>
                 </div>
-                </ul>
+              </ul>
             </div>
           </td>
         </tr>
       </tbody>
-      </table>
-      <table class="schedule-table" v-if="mobileClass" >
+    </table>
+    <table v-if="mobileClass" class="schedule-table">
       <thead class="thead">
         <tr>
           <th>Horaire</th>
-          <th  v-for="(time, timeIndex) in times" :time="time" :key="timeIndex">{{ time }}</th>
+          <th v-for="(time, timeIndex) in ScheduleTime" :key="timeIndex" :time="time">
+            {{ time }}
+          </th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(date, dateIndex) in dates" :key="dateIndex">
+        <tr v-for="(date, dateIndex) in Scheduledate" :key="dateIndex">
           <th>{{ date }}</th>
-          <td v-for="(time, timeIndex) in times" :key="timeIndex">
-            <div  v-for="(data, dataIndex) in scheduleData" :key="dataIndex">
-            <div v-for="(events, eventsIndex) in data" :key="eventsIndex">
-              <ul class="events" v-for="(event, eventIndex) in events" :key="eventIndex">
-                <div v-if="(data[0] === date) && eventIndex === time">
-                <li class="event" v-for="(course, courseIndex) in event" :key="courseIndex"
-                  :class="{ active: isActive(time, course.name, data[0], course.price) }"
-                  @click="setActive(course.id, time, course.name, data[0], course.price)">
-                    <span>{{ course.name }}</span><span>{{ scheduleStore.formatPrice(course.price) }}</span>
-                  </li>
-                </div>
+          <td v-for="(time, timeIndex) in ScheduleTime" :key="timeIndex">
+            <div v-for="(data, dataIndex) in scheduleData" :key="dataIndex">
+              <div v-for="(events, eventsIndex) in data" :key="eventsIndex">
+                <ul v-for="(event, eventIndex) in events" :key="eventIndex" class="events">
+                  <div v-if="(data[0] === date) && eventIndex === time">
+                    <li v-for="(course, courseIndex) in event" :key="courseIndex" class="event"
+                      :class="{ active: isActive(time, course.name, data[0], course.price) }"
+                      @click="setActive(course.id, time, course.name, data[0], course.price)">
+                      <span>{{ course.name }}</span><span>{{ formatPrice(course.price) }}</span>
+                    </li>
+                  </div>
                 </ul>
               </div>
             </div>
@@ -59,14 +63,12 @@
 
 <script setup>
 import { onBeforeUnmount, onMounted, ref, computed } from 'vue'
-import { useScheduleStore } from '../store/Schedulestore.js'
+import { useScheduleStore } from '../store/scheduleStore.js'
 import { storeToRefs } from 'pinia'
+import { formatPrice } from '../utils'
 
 const scheduleStore = useScheduleStore()
-const { scheduleData } = storeToRefs(scheduleStore)
-
-const times = ref(['18:10', '19:15', '20:25'])
-const dates = ref(['Lundi', 'Mardi', 'Mercredi', 'Vendredi', 'Samedi', 'Dimanche'])
+const { scheduleData, Scheduledate, ScheduleTime } = storeToRefs(scheduleStore)
 
 const activeCourses = ref({})
 const isMobile = ref(false)
@@ -124,8 +126,7 @@ const isActive = (time, course, date) => {
 </script>
 
 <style scoped>
-
-table{
+table {
   width: 100%;
 }
 
@@ -137,11 +138,11 @@ td {
   text-align: center;
 }
 
-tbody tr{
- height: 80px;
+tbody tr {
+  height: 80px;
 }
 
-.dspNone{
+.dspNone {
   display: none;
 }
 

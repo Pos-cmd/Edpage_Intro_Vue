@@ -1,6 +1,6 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import { useScheduleStore } from './store/Schedulestore.js'
+import { useScheduleStore } from './store/scheduleStore.js'
 import ScheduleLoading from './components/ScheduleLoading.vue'
 
 const scheduleStore = useScheduleStore()
@@ -9,14 +9,12 @@ scheduleStore.getSchedule()
 </script>
 
 <template>
-
   <div class="container">
     <div class="element">
-      <ScheduleLoading v-if="scheduleStore.isLoading"/>
+      <ScheduleLoading v-if="scheduleStore.isLoading" />
       <RouterView v-if="!scheduleStore.isLoading" />
     </div>
   </div>
-
 </template>
 
 <style scoped>

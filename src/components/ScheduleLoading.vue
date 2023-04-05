@@ -1,5 +1,8 @@
 <template>
-  <img src="../assets/img/1480.gif" alt="spinner">
+  <img
+    src="../assets/img/1480.gif"
+    alt="spinner"
+  >
 </template>
 
 <style>
