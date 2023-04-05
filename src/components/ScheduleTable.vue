@@ -1,6 +1,6 @@
 <template>
   <div class="schedule">
-    <table class="schedule-table">
+    <table class="schedule-table" v-if="!mobileClass">
       <thead class="thead">
         <tr>
           <th>Horaire</th>
@@ -25,12 +25,40 @@
           </td>
         </tr>
       </tbody>
+      </table>
+      <table class="schedule-table" v-if="mobileClass" >
+      <thead class="thead">
+        <tr>
+          <th>Horaire</th>
+          <th  v-for="(time, timeIndex) in times" :time="time" :key="timeIndex">{{ time }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(date, dateIndex) in dates" :key="dateIndex">
+          <th>{{ date }}</th>
+          <td v-for="(time, timeIndex) in times" :key="timeIndex">
+            <div  v-for="(data, dataIndex) in scheduleData" :key="dataIndex">
+            <div v-for="(events, eventsIndex) in data" :key="eventsIndex">
+              <ul class="events" v-for="(event, eventIndex) in events" :key="eventIndex">
+                <div v-if="(data[0] === date) && eventIndex === time">
+                <li class="event" v-for="(course, courseIndex) in event" :key="courseIndex"
+                  :class="{ active: isActive(time, course.name, data[0], course.price) }"
+                  @click="setActive(course.id, time, course.name, data[0], course.price)">
+                    <span>{{ course.name }}</span><span>{{ scheduleStore.formatPrice(course.price) }}</span>
+                  </li>
+                </div>
+                </ul>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref, computed } from 'vue'
 import { useScheduleStore } from '../store/Schedulestore.js'
 import { storeToRefs } from 'pinia'
 
@@ -38,7 +66,27 @@ const scheduleStore = useScheduleStore()
 const { scheduleData } = storeToRefs(scheduleStore)
 
 const times = ref(['18:10', '19:15', '20:25'])
+const dates = ref(['Lundi', 'Mardi', 'Mercredi', 'Vendredi', 'Samedi', 'Dimanche'])
+
 const activeCourses = ref({})
+const isMobile = ref(false)
+
+const checkMobile = () => {
+  isMobile.value = window.innerWidth < 768
+}
+
+const mobileClass = computed(() => {
+  return isMobile.value
+})
+
+onMounted(() => {
+  window.addEventListener('resize', checkMobile)
+  checkMobile()
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', checkMobile)
+})
 
 /**
  * Définit ou désactive un cours actif et abonne l'utilisateur.
@@ -76,12 +124,25 @@ const isActive = (time, course, date) => {
 </script>
 
 <style scoped>
+
+table{
+  width: 100%;
+}
+
 table,
 th,
 td {
   border-collapse: collapse;
   border: .01px solid #ddd;
   text-align: center;
+}
+
+tbody tr{
+ height: 80px;
+}
+
+.dspNone{
+  display: none;
 }
 
 .schedule-table th,
@@ -135,7 +196,7 @@ li span {
 
 @media (width < 760px) {
   table {
-    font-size: 10px;
+    font-size: 13px;
   }
 }
 </style>

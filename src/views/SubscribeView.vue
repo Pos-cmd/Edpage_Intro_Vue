@@ -18,7 +18,6 @@
 </template>
 
 <script setup>
-import { stringify } from 'json5';
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 
