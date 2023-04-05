@@ -18,6 +18,7 @@
 </template>
 
 <script setup>
+import { stringify } from 'json5';
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -38,7 +39,7 @@ const isValid = reactive({})
 const submit = (event) => {
   const { username, password } = Object.fromEntries(new FormData(event.target))
 
-  if (username !== user.name) {
+  if (username.trim() !== user.name) {
     isValid.name = false
     isValid.nameMsg = 'Nom d\'utilisateur incorrect'
   } else {
@@ -46,7 +47,7 @@ const submit = (event) => {
     isValid.nameMsg = 'Champ valide'
   }
 
-  if (password !== user.password) {
+  if (password.trim() !== user.password) {
     isValid.psw = false
     isValid.pswMsg = 'Mot de passe incorrect'
   } else {
@@ -54,7 +55,7 @@ const submit = (event) => {
     isValid.pswMsg = 'Champ valide'
   }
 
-  if (username === user.name && password === user.password) {
+  if (username.trim() === user.name && password.trim() === user.password) {
     localStorage.setItem('isConnect', JSON.stringify({ isConnect: true }))
     router.push('/home')
   }
