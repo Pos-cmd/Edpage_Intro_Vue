@@ -10,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(time, timeIndex) in ScheduleTime" :key="timeIndex">
+        <tr v-for="(time, timeIndex) in scheduleTime" :key="timeIndex">
           <th>{{ time }}</th>
           <td v-for="(data, dataIndex) in scheduleData" :key="dataIndex">
             <div v-for="(events, eventsIndex) in data" :key="eventsIndex">
@@ -32,15 +32,15 @@
       <thead class="thead">
         <tr>
           <th>Horaire</th>
-          <th v-for="(time, timeIndex) in ScheduleTime" :key="timeIndex" :time="time">
+          <th v-for="(time, timeIndex) in scheduleTime" :key="timeIndex" :time="time">
             {{ time }}
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(date, dateIndex) in Scheduledate" :key="dateIndex">
+        <tr v-for="(date, dateIndex) in scheduledate" :key="dateIndex">
           <th>{{ date }}</th>
-          <td v-for="(time, timeIndex) in ScheduleTime" :key="timeIndex">
+          <td v-for="(time, timeIndex) in scheduleTime" :key="timeIndex">
             <div v-for="(data, dataIndex) in scheduleData" :key="dataIndex">
               <div v-for="(events, eventsIndex) in data" :key="eventsIndex">
                 <ul v-for="(event, eventIndex) in events" :key="eventIndex" class="events">
@@ -58,6 +58,25 @@
         </tr>
       </tbody>
     </table>
+    <!-- <ul v-for="data in scheduleData"> -->
+      <!-- <div v-for="date in scheduledate">
+        <h3>{{ date }}</h3>
+        <ul v-for="time in scheduleTime">
+          <h4>{{ time }}</h4>
+          <div v-for="(data, dataIndex) in scheduleData" :key="dataIndex">
+            <div v-for="(events, eventsIndex) in data" :key="eventsIndex">
+              <div v-for="(event, eventIndex) in events" :key="eventIndex" class="events">
+                <div v-if="(eventIndex === time && data[0] === date)">
+                  <li v-for="(course, courseIndex) in event" :key="courseIndex">
+                    <span>{{ course.name }}</span><span>{{ formatPrice(course.price) }}</span>
+                  </li>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ul>
+      </div> -->
+    <!-- </ul> -->
   </div>
 </template>
 
@@ -68,7 +87,7 @@ import { storeToRefs } from 'pinia'
 import { formatPrice } from '../utils'
 
 const scheduleStore = useScheduleStore()
-const { scheduleData, Scheduledate, ScheduleTime } = storeToRefs(scheduleStore)
+const { scheduleData, scheduledate, scheduleTime } = storeToRefs(scheduleStore)
 
 const activeCourses = ref({})
 const isMobile = ref(false)

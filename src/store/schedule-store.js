@@ -31,7 +31,7 @@ export const useScheduleStore = defineStore("schedule", {
      * @param {Object} state - L'état actuel de l'application.
      * @returns {Array} - Un tableau contenant les dates planifiées.
      */
-    Scheduledate: (state) => {
+    scheduledate: (state) => {
       return Object.entries(state.schedule).map((schedule) => schedule[0]);
     },
     /**
@@ -39,14 +39,18 @@ export const useScheduleStore = defineStore("schedule", {
      *@param {Object} state - L'état actuel de l'application.
      *@returns {Array} - Un tableau contenant les heures planifiées.
      */
-    ScheduleTime: (state) => {
+    scheduleTime: (state) => {
       return Object.entries(state.schedule)
         .map((schedule) => schedule[1])
         .map((data) => Object.keys(data))
         .flatMap((times) => times)
-        .filter((time, index, arr) => {
-          return arr.indexOf(time) === index;
-        });
+        .filter((time, index, arr) =>  arr.indexOf(time) === index)
+        .sort((a, b) => {
+          const [hourA, minuteA] = a.split(':');
+          const [hourB, minuteB] = b.split(':');
+    
+          return hourA - hourB || minuteA - minuteB;
+        })
     },
   },
   actions: {
