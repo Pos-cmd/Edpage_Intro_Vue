@@ -5,70 +5,45 @@
  * @param {Event} event - L'événement de soumission du formulaire.
  * @returns {void}
  */
-function submit (event) {
+function submit(event) {
   const { name } = Object.fromEntries(new FormData(event.target))
   alert('Vous ête bien incrit: ' + name)
 }
 </script>
 
 <template>
-  <div class="contactForm">
-    <div class="msg">
-      <h4>NOUS ÉCRIRE</h4>
-      <p>Envoyez nous vos demande</p>
-    </div>
-    <div class="form">
-      <form
-        action=""
-        @submit.prevent="(event) => submit(event)"
-      >
-        <div class="form-row">
-          <div class="form-el">
-            <input
-              id="name"
-              type="text"
-              name="name"
-              placeholder="Nom"
-              required
-            >
-            <input
-              id="phone"
-              type="text"
-              name="phone"
-              placeholder="Telephone"
-              required
-            >
+  <section id="contact">    
+    <div class="container">
+      <div class="element">
+        <div class="contactForm">
+          <div class="msg">
+            <h4>NOUS ÉCRIRE</h4>
+            <p>Envoyez nous vos demande</p>
           </div>
-          <div class="form-el">
-            <input
-              id="email"
-              type="text"
-              name="email"
-              placeholder="Email"
-              required
-            >
-            <input
-              id="subject"
-              type="text"
-              name="subject"
-              placeholder="Sujet"
-            >
+          <div class="form">
+            <form action="" @submit.prevent="(event) => submit(event)">
+              <div class="form-row">
+                <div class="form-el">
+                  <input id="name" type="text" name="name" placeholder="Nom" required>
+                  <input id="phone" type="text" name="phone" placeholder="Telephone" required>
+                </div>
+                <div class="form-el">
+                  <input id="email" type="text" name="email" placeholder="Email" required>
+                  <input id="subject" type="text" name="subject" placeholder="Sujet">
+                </div>
+              </div>
+              <div class="form-row">
+                <textarea id="textarea" name="message" cols="30" placeholder="Message" />
+              </div>
+              <button type="submit">
+                ENVOYER
+              </button>
+            </form>
           </div>
         </div>
-        <div class="form-row">
-          <textarea
-            id="textarea"
-            name="message"
-            cols="30"
-            placeholder="Message"
-          />
-        </div>
-        <button type="submit">
-          ENVOYER
-        </button>
-      </form>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>
@@ -81,39 +56,41 @@ function submit (event) {
 
 .msg {
   width: 30%;
-  background-color: #060a4f;
-  padding-inline: 1rem;
+  background-color: #21418E;
+  padding: 2.1875rem 2.5rem 1.875rem;
   color: white;
 }
 
 h4 {
-  font-size: 1.5rem;
+  font-size: 1.875rem;
+  font-family: 'Roboto Slab', seriif;
 }
 
 h4:after {
   content: "";
   background-color: white;
   width: 65px;
-  margin-top: 1rem;
+  margin-block: 1rem;
   display: block;
   height: 1px;
 }
 
 .form {
   width: 70%;
-  background-color: #f3f1f1;
-  padding: 1rem;
+  background-color: #F5F5F5;
+  padding: 2.375rem 2.5rem 1.875rem;
 }
 
 form {
   width: 100%;
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
   flex-direction: column;
 }
 
 .form-row {
   height: 30%;
+  font-family: 'Opens-sans', sans-serif;
   justify-content: space-between;
   display: flex;
   gap: 1rem;
@@ -124,24 +101,26 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
   align-content: space-between;
 }
 
 input {
   width: 100%;
   height: 30px;
+  padding: .4375rem 1.25rem;
 }
 
 textarea {
   width: 100%;
   height: 70px;
+  padding: .4375rem .625rem;
 }
 
 button {
   width: 7rem;
   border: none;
-  background-color: red;
+  background-color: #E50002;
   color: #fff;
   padding: .5rem;
   cursor: pointer;
@@ -149,7 +128,7 @@ button {
 }
 
 button:hover {
-  background-color: #d30606;
+  background-color: #a80046;
 }
 
 @media screen and (width < 760px) {
