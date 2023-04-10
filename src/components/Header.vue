@@ -3,7 +3,6 @@
     import { RouterLink } from 'vue-router';
 </script>
 
-
 <template>
     <section class="header" id="header">
         <header>
@@ -13,11 +12,18 @@
                 </RouterLink>
             </div>
             <div class="nav">
+                <div class="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
                 <navbar />
             </div>
         </header>
     </section>
 </template>
+
+
 
 <style scoped>
     .header{

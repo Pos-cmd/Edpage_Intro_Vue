@@ -116,6 +116,14 @@ span {
 p {
     margin-block: 1rem;
 }
+@media (width < 767px) {
+    .footer-items{
+        flex-wrap: wrap;
+    }
 
+    .item{
+        width: 100%;
+    }
+}
 
 </style>

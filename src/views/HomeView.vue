@@ -1,17 +1,17 @@
 <script setup>
-import PageHeader from '../components/Header.vue'
-import PageHero from '../components/Hero.vue'
-import Schedule from '../components/Schedule/Schedule.vue'
-import ContactForm from '../components/ContactForm.vue'
-import PageMap from '../components/Map.vue'
-import PageFooter from '../components/Footer.vue'
+import sectionHeader from '../components/Header.vue'
+import SectionHero from '../components/Hero/Hero.vue'
+import SectionSchedule from '../components/Schedule/Schedule.vue'
+import SectionContact from '../components/ContactForm.vue'
+import sectionMap from '../components/Map.vue'
+import sectionFooter from '../components/Footer.vue'
 </script>
 
 <template>
-  <page-header />
-  <page-hero />
-  <schedule />
-  <contact-form />
-  <page-map />
-  <page-footer />
+  <section-header />
+  <section-hero />
+  <section-schedule />
+  <section-contact />
+  <section-map />
+  <section-footer />
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div class="schedule">
-    <table v-if="!mobileClass" class="schedule-table">
+    <table class="schedule-table">
       <thead class="thead">
         <tr>
           <th>Horaire</th>
@@ -101,8 +101,10 @@ const isActive = (time, course, date) => {
 </script>
 
 <style scoped>
-table {
+
+.schedule{
   width: 100%;
+  overflow-x: scroll;
 }
 
 table,
@@ -162,7 +164,7 @@ th {
 }
 
 .schedule-table {
-  width: 100%;
+  width: 1000px;
   height: 100%;
 }
 

@@ -117,6 +117,10 @@ textarea {
   padding: .4375rem .625rem;
 }
 
+input, textarea{
+  outline-color: #F5F5F5 ;
+}
+
 button {
   width: 7rem;
   border: none;
@@ -131,17 +135,23 @@ button:hover {
   background-color: #a80046;
 }
 
-@media screen and (width < 760px) {
-  .contactForm {
+@media screen and (width < 767px) {
+  .form-row{
     flex-wrap: wrap;
   }
 
-  .msg {
+  .form-el{
     width: 100%;
   }
 
-  .form {
+  .contactForm{
+    display: block;
+    width: 540px;
+  }
+
+  .form, .msg{
     width: 100%;
+    padding-inline: .9375rem;
   }
 }
 </style>

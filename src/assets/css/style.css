@@ -28,3 +28,9 @@ ul li{
 .logo-img{
   width: 9.375rem;
 }
+
+@media (width < 767px) {
+  .element{
+    width: 90%;
+  }
+}

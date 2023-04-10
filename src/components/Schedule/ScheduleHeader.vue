@@ -4,9 +4,9 @@
       CALENDRIER
     </h1>
     <div class="information">
-      <span>SESSION DÉCEMBRE 2022</span>
-      <div class="date">
-        <span>04 déc 2022</span>-<span>19 jan 2023</span>
+      <span class="info-item">SESSION DÉCEMBRE 2022</span>
+      <div class="date info-item">
+        <span >04 déc 2022</span>-<span>19 jan 2023</span>
       </div>
       <div class="lastpart">
         <RouterLink v-if="connect" :class="{ noClick: (totalPrice === 0) }" class="subscribeBtn" to="/" @click="logOut">
@@ -105,7 +105,17 @@ const logOut = function () {
 
 @media (width < 760px) {
   .information {
-    height: 160px;
+    justify-content: center;   
+    padding: .9375rem ; 
+    height: auto;
+    font-size: 1rem;
+  }
+  .info-item{
+    margin-bottom: 1rem;
+  }
+
+  .subscribeBtn, .lastpart{
+    margin-bottom: 1rem;
   }
 }
 </style>
