@@ -18,7 +18,9 @@
 
         <!-- Pagination -->
         <div class="pagination">
-            <span v-for="slide in getSlideCount" :key="index" :class="active"></span>
+            <span v-for="(slide, index) in getSlideCount" :key="index" :class="{ active: index + 1 === currentSlide }"
+                @click="goToSlide(index)">
+            </span>
         </div>
     </div>
 </template>
@@ -28,6 +30,8 @@ import { ref, onMounted } from 'vue';
 
 const currentSlide = ref(1);
 const getSlideCount = ref(null)
+const autoplayEnabled = ref(true)
+const timeOutDuration = ref(5000)
 
 // Next Slide
 const nextSlide = () => {
@@ -38,7 +42,7 @@ const nextSlide = () => {
     currentSlide.value += 1
 }
 
-const prevSlide = () =>{
+const prevSlide = () => {
     if (currentSlide.value === 1) {
         currentSlide.value = 1
         return
@@ -46,10 +50,24 @@ const prevSlide = () =>{
     currentSlide.value -= 1
 }
 
+const goToSlide = (index) => {
+    currentSlide.value = index + 1
+}
+
+const autoplay = () => {
+    setInterval(() => {
+        nextSlide()
+    }, timeOutDuration.value)
+}
+
+if (autoplayEnabled.value) {
+    autoplay()
+}
+
 onMounted(() => {
     getSlideCount.value = document.querySelectorAll('.slide').length
     console.log(getSlideCount.value);
-})
+});
 
 </script>
 
@@ -89,5 +107,28 @@ onMounted(() => {
 
 .icon:hover {
     background-color: #634767bb;
+}
+
+.pagination {
+    position: absolute;
+    bottom: 24px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+.pagination span {
+    cursor: pointer;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #f5f5f57a;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.pagination span.active {
+    background-color: #f5f5f5;
 }
 </style>

@@ -146,7 +146,7 @@ button:hover {
 
   .contactForm{
     display: block;
-    width: 540px;
+    /* width: 540px; */
   }
 
   .form, .msg{

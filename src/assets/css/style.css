@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500&family=Open+Sans&family=Roboto+Slab:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Arimo:wght@400;500&family=Open+Sans&family=Roboto+Slab:wght@600&display=swap");
 
 * {
   box-sizing: border-box;
@@ -11,26 +11,27 @@ body {
   font-weight: 400;
 }
 
-ul li{
+ul li {
   list-style: none;
 }
 
-.container{
+.container {
   max-width: 1440px;
   margin: auto;
 }
 
-.element{
+.element {
   margin-inline: auto;
   width: 85%;
 }
 
-.logo-img{
+.logo-img {
   width: 9.375rem;
 }
 
+
 @media (width < 767px) {
-  .element{
+  .element {
     width: 90%;
   }
 }

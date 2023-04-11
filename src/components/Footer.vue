@@ -62,7 +62,7 @@
     display: block;
 }
 
-.soc-f{
+.soc-f {
     font-size: 30px;
     color: #fff;
 }
@@ -70,7 +70,8 @@
 .copyright {
     padding-top: 1.5rem;
 }
-.copyright-items{
+
+.copyright-items {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -108,6 +109,14 @@ li {
     padding-block: 13px 15px;
 }
 
+li::after {
+    content: "";
+    height: 1px;
+    margin-top: .5rem;
+    background-color: #fff;
+    display: block;
+}
+
 span {
     max-width: 48%;
     display: block;
@@ -116,14 +125,14 @@ span {
 p {
     margin-block: 1rem;
 }
+
 @media (width < 767px) {
-    .footer-items{
+    .footer-items {
         flex-wrap: wrap;
     }
 
-    .item{
+    .item {
         width: 100%;
     }
 }
-
 </style>
