@@ -49,7 +49,7 @@ const getImageUrl = (name) => {
 }
 
 img {
-    min-width: 100%;
+    width: 100%;
     height: 100%;
     object-fit: cover;
     filter: brightness(0.4);

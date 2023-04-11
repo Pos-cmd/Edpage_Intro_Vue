@@ -70,7 +70,7 @@ const { totalPrice } = storeToRefs(scheduleStore);
 
 </script>
 
-<style>
+<style scoped>
 .titre {
   text-align: center;
   display: grid;
@@ -151,7 +151,7 @@ const { totalPrice } = storeToRefs(scheduleStore);
   padding: 1.5rem;
   border-radius: 5px;
   box-shadow: 0px 10px 5px 2px rgba(0, 0, 0, .1);
-  width: 40%;
+  width: 60%;
 }
 
 .modal-header {
@@ -252,12 +252,13 @@ form .form-item input:focus {
   width: 100%;
 }
 
-@media (width < 760px) {
+@media screen and (width < 767px) {
   .information {
     justify-content: center;
     padding: .9375rem;
     height: auto;
     font-size: 1rem;
+    flex-direction: column;
   }
 
   .info-item {
@@ -266,6 +267,19 @@ form .form-item input:focus {
 
   .subscribeBtn,
   .lastpart {
+    margin-bottom: 1rem;
+  }
+
+  .modal {
+    width: 90%;
+  }
+
+  form .form-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .modal-info {
     margin-bottom: 1rem;
   }
 }
