@@ -48,7 +48,8 @@ li {
         display: flex;
         align-items: center;
         font-size: 12px;
-        padding: 0 0 0 1rem;
+        padding: 1rem;
+        margin: 0;
     }
 
     li:hover{

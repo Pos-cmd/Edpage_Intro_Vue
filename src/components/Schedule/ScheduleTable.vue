@@ -190,6 +190,10 @@ li span {
   flex-direction: column;
 }
 
+table{
+  min-width: 1000px;
+}
+
 @media (width < 760px) {
   table {
     font-size: 13px;
