@@ -18,7 +18,7 @@
     </div>
   </div>
   <Teleport to="#app">
-    <div class="modal-bg" v-if="isModalOpen">
+    <!-- <div class="modal-bg" v-if="isModalOpen">
       <div class="modal">
         <div class="modal-header">
           <span>Formulaire - Connexion</span>
@@ -53,11 +53,13 @@
           </span>
         </div>
       </div>
-    </div>
+    </div> -->
+    <subscribe @close-modal="isModalOpen = false" v-if="isModalOpen"/>
   </Teleport>
 </template>
 
 <script setup>
+import Subscribe from '../Subscribe.vue';
 import { useScheduleStore } from '../../store/schedule-store.js'
 import { storeToRefs } from 'pinia'
 import { formatPrice } from '../../utils/index.js';

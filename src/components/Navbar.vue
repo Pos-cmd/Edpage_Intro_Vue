@@ -1,10 +1,10 @@
 <template>
     <nav class="navmenu">
         <ul>
-            <li>ACCEUIL</li>
-            <li>CALENRIER</li>
-            <li>CONTACT</li>
-            <li>SE CONNECTER / S'INSCRIRE</li>
+            <li><a href="#">ACCEUIL</a> </li>
+            <li><a href="#schedule">CALENRIER</a> </li>
+            <li><a href="#contact">CONTACT</a> </li>
+            <li> <a href="">SE CONNECTER / S'INSCRIRE</a></li>
         </ul>
     </nav>
 </template>
@@ -19,9 +19,11 @@
     padding: 0;
 }
 
-li {
+li a{
     margin: .625rem 1.25rem;
     cursor: pointer;
+    text-decoration: none;
+    color: #111;
 }
 
 @media (width < 974px) {
@@ -36,14 +38,14 @@ li {
     }
 
 
-    .navmenu{
+    .navmenu {
         display: flex;
         justify-content: space-between;
         padding: 1rem;
     }
 
 
-    li{
+    li {
         height: 3.5rem;
         display: flex;
         align-items: center;
@@ -52,7 +54,7 @@ li {
         margin: 0;
     }
 
-    li:hover{
+    li:hover {
         background-color: #E9ECF4;
     }
 }
