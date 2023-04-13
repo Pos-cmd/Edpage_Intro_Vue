@@ -80,7 +80,6 @@ export const useScheduleStore = defineStore("schedule", {
      * @returns {void}
      */
     subscribe: function (event) {
-      console.log(event);
       const isDateHaveEvent = this.subscribeTo.find(
         (obj) => obj.date === event.date && obj.time === event.time
       );
@@ -98,7 +97,6 @@ export const useScheduleStore = defineStore("schedule", {
           this.subscribeTo = this.subscribeTo.filter((obj) => obj.id !== sb.id);
         }
         this.subscribeTo.push(event);
-        console.log(this.subscribeTo);
       }
     }
   }

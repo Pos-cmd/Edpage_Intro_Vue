@@ -34,7 +34,6 @@
 </template>
 
 <script setup>
-import { onBeforeUnmount, onMounted, ref, computed } from 'vue'
 import { useScheduleStore } from '../../store/schedule-store.js'
 import { storeToRefs } from 'pinia'
 
