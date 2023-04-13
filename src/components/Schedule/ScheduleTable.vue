@@ -4,31 +4,27 @@
       <thead class="thead">
         <tr>
           <th>Horaire</th>
-          <td class="date" v-for="(date, dateIndex) in scheduleData" :key="dateIndex">
-            {{ date[0] }}
+          <td class="date" v-for="(date, dateIndex) in scheduledate" :key="dateIndex">
+            {{ date }}
           </td>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(time, timeIndex) in scheduleTime" :key="timeIndex">
           <td class="heure">{{ time }}</td>
-          <td class="course-cell" v-for="(data, dataIndex) in scheduleData" :key="dataIndex">
-            <div v-if="Object.keys(data[1]).includes(time)">
-              <div v-for="(events, eventsIndex) in data" :key="eventsIndex" v-if="Object.keys(data[1]).includes(time)">
-                <ul v-for="(event, eventIndex) in events" :key="eventIndex" class="events">
-                  <div v-if="(eventIndex === time)">
-                    <li v-for="(course, courseIndex) in event" :key="courseIndex" class="event"
-                      :class="{ active: isActive(time, course.name, data[0], course.price) }"
-                      @click="setActive(course.id, time, course.name, data[0], course.price)">
+          <td class="course-cell"  v-for="(date, dateIndex) in scheduledate" :key="dateIndex">
+            <div  v-for="(data, dataIndex) in scheduleData" :key="dataIndex">
+                <ul v-if="data[1].start_time === time && parseInt( data[1].day) === dateIndex + 1" class="events">
+                    <li v-for="(course, eventsIndex) in data[1].dances" :key="eventsIndex" class="event"
+                      :class="{ active: isActive(time, course.name, data[0], course.normal_price) }"
+                      @click="setActive(course.id, time, course.name, data[0], course.normal_price)">
                       {{ course.name }}
                       <!-- <span class="reactivation" v-if="isActive(time, course.name, data[0], course.price)">
                         <input type="checkbox" name="" id="">
                         <label for="">Réactivation</label>
                       </span> -->
                     </li>
-                  </div>
                 </ul>
-              </div>
             </div>
           </td>
         </tr>
@@ -43,8 +39,9 @@ import { useScheduleStore } from '../../store/schedule-store.js'
 import { storeToRefs } from 'pinia'
 
 const scheduleStore = useScheduleStore()
-const { scheduleData, scheduleTime } = storeToRefs(scheduleStore)
+const { scheduleData, scheduleTime, scheduledate } = storeToRefs(scheduleStore)
 
+console.log(scheduleTime);
 const activeCourses = ref({})
 const isMobile = ref(false)
 

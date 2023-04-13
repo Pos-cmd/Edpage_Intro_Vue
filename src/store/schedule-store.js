@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import axios from "axios";
+import loadData from "../data/data";
 
 export const useScheduleStore = defineStore("schedule", {
   state: () => ({
@@ -32,7 +33,8 @@ export const useScheduleStore = defineStore("schedule", {
      * @returns {Array} - Un tableau contenant les dates planifiées.
      */
     scheduledate: (state) => {
-      return Object.entries(state.schedule).map((schedule) => schedule[0]);
+      // return Object.entries(state.schedule).map((schedule) => schedule[0]);
+      return ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']
     },
     /**
      *Retourne un tableau des heures planifiées.
@@ -41,9 +43,7 @@ export const useScheduleStore = defineStore("schedule", {
      */
     scheduleTime: (state) => {
       return Object.entries(state.schedule)
-        .map((schedule) => schedule[1])
-        .map((data) => Object.keys(data))
-        .flatMap((times) => times)
+        .map((schedule) => schedule[1].start_time)
         .filter((time, index, arr) =>  arr.indexOf(time) === index)
         .sort((a, b) => {
           const [hourA, minuteA] = a.split(':');
@@ -61,14 +61,16 @@ export const useScheduleStore = defineStore("schedule", {
     async getSchedule() {
       this.isLoading = true;
 
-      try {
-        const res = await axios.get(
-          "https://my-json-server.typicode.com/Pos-cmd/schedule/Schedule"
-        );
-        this.schedule = await res.data;
-      } catch (error) {
-        alert(error);
-      }
+      this.schedule = await loadData();
+      console.log( this.schedule);
+      // try {
+      //   const res = await axios.get(
+      //     "https://my-json-server.typicode.com/Pos-cmd/schedule/Schedule"
+      //   );
+      //   this.schedule = await res.data;
+      // } catch (error) {
+      //   alert(error);
+      // }
 
       this.isLoading = false;
     },
