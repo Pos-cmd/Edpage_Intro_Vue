@@ -4,10 +4,21 @@
             <li><a href="#">ACCEUIL</a> </li>
             <li><a href="#schedule">CALENRIER</a> </li>
             <li><a href="#contact">CONTACT</a> </li>
-            <li> <a href="">SE CONNECTER / S'INSCRIRE</a></li>
+            <li> <a @click="isModalOpen = true">SE CONNECTER / S'INSCRIRE</a></li>
         </ul>
     </nav>
+    <Teleport to="#app">
+        <subscribe @close-modal="isModalOpen = false" v-if="isModalOpen"/>
+    </Teleport>
 </template>
+
+<script setup>
+import { ref } from 'vue';
+import Subscribe from './Subscribe.vue';
+
+const isModalOpen = ref(false)
+
+</script>
 
 <style scoped>
 .navmenu ul {

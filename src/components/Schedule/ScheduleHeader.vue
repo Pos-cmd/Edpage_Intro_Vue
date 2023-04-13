@@ -18,42 +18,7 @@
     </div>
   </div>
   <Teleport to="#app">
-    <!-- <div class="modal-bg" v-if="isModalOpen">
-      <div class="modal">
-        <div class="modal-header">
-          <span>Formulaire - Connexion</span>
-          <button class="close-btn" @click="isModalOpen = false">X</button>
-        </div>
-        <div class="modal-form">
-          <form action="">
-            <div class="form-item">
-              <label for="">Adresse Email</label>
-              <div class="input-element">
-                <input type="email" placeholder="Adresse Email">
-                <span></span>
-              </div>
-            </div>
-            <div class="form-item">
-              <label for="">Mot de passe</label>
-              <div class="input-element">
-                <input type="password" placeholder="Mot de passe">
-                <span></span>
-              </div>
-            </div>
-          </form>
-        </div>
-        <section class="modal-info">
-          <a class="info" href="#">Vous n'avez pas de compte? S'inscrire</a>
-          <a class="info" href="#">Mot de passe oublié</a>
-        </section>
-        <div class="modal-footer">
-          <span>
-            <button class="btn-annuler">Annuler</button>
-            <button class="btn-valider">Valider</button>
-          </span>
-        </div>
-      </div>
-    </div> -->
+    
     <subscribe @close-modal="isModalOpen = false" v-if="isModalOpen"/>
   </Teleport>
 </template>
