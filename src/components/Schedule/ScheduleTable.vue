@@ -16,14 +16,14 @@
             <div  v-for="(data, dataIndex) in scheduleData" :key="dataIndex">
                 <ul v-if="data[1].start_time === time && parseInt( data[1].day) === dateIndex + 1" class="events">
                     <li v-for="(course, eventsIndex) in data[1].dances" :key="eventsIndex" class="event"
-                      :class="{ active: isActive(time, course.name, data[0], course.normal_price) }"
-                      @click="setActive(course.id, time, course.name, data[0], course.normal_price)">
+                      :class="{ active: isActive(time, course.name, dateIndex, parseInt(course.normal_price) ) }"
+                      @click="setActive(dataIndex, time, course.name, dateIndex, parseInt(course.normal_price))">
                       {{ course.name }}
-                      <!-- <span class="reactivation" v-if="isActive(time, course.name, data[0], course.price)">
+                    </li>
+                    <!-- <span class="reactivation" v-if="isActive(time, course.name, dateIndex, parseInt(course.normal_price) ) ">
                         <input type="checkbox" name="" id="">
                         <label for="">Réactivation</label>
-                      </span> -->
-                    </li>
+                    </span> -->
                 </ul>
             </div>
           </td>
@@ -43,24 +43,6 @@ const { scheduleData, scheduleTime, scheduledate } = storeToRefs(scheduleStore)
 
 console.log(scheduleTime);
 const activeCourses = ref({})
-const isMobile = ref(false)
-
-const checkMobile = () => {
-  isMobile.value = window.innerWidth < 768
-}
-
-const mobileClass = computed(() => {
-  return isMobile.value
-})
-
-onMounted(() => {
-  window.addEventListener('resize', checkMobile)
-  checkMobile()
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', checkMobile)
-})
 
 /**
  * Définit ou désactive un cours actif et abonne l'utilisateur.
